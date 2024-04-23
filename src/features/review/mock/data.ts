@@ -1,5 +1,5 @@
-import { ReviewList, parseId } from '@/features/review/model/type'
-import { Review } from '@/features/review/model/type'
+import { type ReviewList, parseId } from '@/features/review/model/type'
+import type { Review } from '@/features/review/model/type'
 
 export const mockReview: Review = {
 	id: parseId('review id'),

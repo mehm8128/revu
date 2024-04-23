@@ -1,6 +1,6 @@
 import { getApiOrigin } from '@/lib/env'
 import { fetcher } from '@/lib/fetcher'
-import { Article, ArticleCreateSeed, ArticleData } from '../model/type'
+import type { Article, ArticleCreateSeed, ArticleData } from '../model/type'
 import {
 	convertArticleCreateSeedToData,
 	convertArticleFromData

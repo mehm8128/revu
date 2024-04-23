@@ -1,6 +1,6 @@
 import { Box, VStack } from '@kuma-ui/core'
-import { ReactNode } from 'react'
-import { FieldError } from 'react-hook-form'
+import type { ReactNode } from 'react'
+import type { FieldError } from 'react-hook-form'
 
 export default function FieldContainer({
 	label,

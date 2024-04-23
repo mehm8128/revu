@@ -5,14 +5,14 @@ import {
 	convertArticleListQueryToData
 } from '@/features/article/apis/converter'
 import {
-	Article,
-	ArticleCreateSeed,
-	ArticleCreateSeedData,
-	ArticleData,
-	ArticleEditSeed,
-	ArticleEditSeedData,
-	ArticleListQuery,
-	ArticleListQueryData,
+	type Article,
+	type ArticleCreateSeed,
+	type ArticleCreateSeedData,
+	type ArticleData,
+	type ArticleEditSeed,
+	type ArticleEditSeedData,
+	type ArticleListQuery,
+	type ArticleListQueryData,
 	parseId
 } from '@/features/article/model/type'
 

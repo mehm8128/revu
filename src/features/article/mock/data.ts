@@ -1,4 +1,8 @@
-import { Article, ArticleList, parseId } from '@/features/article/model/type'
+import {
+	type Article,
+	type ArticleList,
+	parseId
+} from '@/features/article/model/type'
 
 export const mockArticle: Article = {
 	id: parseId('article id'),

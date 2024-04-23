@@ -1,6 +1,11 @@
 import { getApiOrigin } from '@/lib/env'
 import { fetcher } from '@/lib/fetcher'
-import { Article, ArticleData, ArticleEditSeed, ArticleId } from '../model/type'
+import type {
+	Article,
+	ArticleData,
+	ArticleEditSeed,
+	ArticleId
+} from '../model/type'
 import {
 	convertArticleEditSeedToData,
 	convertArticleFromData

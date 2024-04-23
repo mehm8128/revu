@@ -1,4 +1,8 @@
-import { Article, ArticleData, ArticleId } from '@/features/article/model/type'
+import type {
+	Article,
+	ArticleData,
+	ArticleId
+} from '@/features/article/model/type'
 import { getApiOrigin } from '@/lib/env'
 import { convertArticleFromData } from './converter'
 

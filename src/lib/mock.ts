@@ -1,4 +1,4 @@
-import { HttpHandler } from 'msw'
+import type { HttpHandler } from 'msw'
 
 import { articleHandlers } from '@/features/article/mock/handlers'
 import { getApiOrigin } from '@/lib/env'

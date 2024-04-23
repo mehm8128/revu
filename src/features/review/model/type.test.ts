@@ -1,8 +1,8 @@
 import { mockReview } from '@/features/review/mock/data'
 import { safeParse } from 'valibot'
 import {
-	ReviewCreateSeed,
-	ReviewEditSeed,
+	type ReviewCreateSeed,
+	type ReviewEditSeed,
 	reviewCreateSeedSchema,
 	reviewEditSeedSchema
 } from './type'

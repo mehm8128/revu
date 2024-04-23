@@ -1,7 +1,7 @@
-import { ArticleId } from '@/features/article/model/type'
+import type { ArticleId } from '@/features/article/model/type'
 import { getApiOrigin } from '@/lib/env'
 import { fetcher } from '@/lib/fetcher'
-import { Review, ReviewCreateSeed, ReviewData } from '../model/type'
+import type { Review, ReviewCreateSeed, ReviewData } from '../model/type'
 import {
 	convertReviewCreateSeedToData,
 	convertReviewFromData

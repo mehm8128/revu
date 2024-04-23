@@ -1,10 +1,10 @@
 import {
-	Review,
-	ReviewCreateSeed,
-	ReviewCreateSeedData,
-	ReviewData,
-	ReviewEditSeed,
-	ReviewEditSeedData,
+	type Review,
+	type ReviewCreateSeed,
+	type ReviewCreateSeedData,
+	type ReviewData,
+	type ReviewEditSeed,
+	type ReviewEditSeedData,
 	parseId
 } from '@/features/review/model/type'
 import {

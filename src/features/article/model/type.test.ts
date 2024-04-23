@@ -1,8 +1,8 @@
 import { mockArticle } from '@/features/article/mock/data'
 import { safeParse } from 'valibot'
 import {
-	ArticleCreateSeed,
-	ArticleEditSeed,
+	type ArticleCreateSeed,
+	type ArticleEditSeed,
 	articleCreateSeedSchema,
 	articleEditSeedSchema
 } from './type'

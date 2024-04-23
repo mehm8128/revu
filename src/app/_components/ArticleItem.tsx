@@ -1,4 +1,4 @@
-import { Article } from '@/features/article/model/type'
+import type { Article } from '@/features/article/model/type'
 import { dateToString } from '@/lib/date'
 import { Flex } from '@kuma-ui/core'
 import Link from 'next/link'

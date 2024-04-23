@@ -1,6 +1,6 @@
-import { http, HttpResponse, PathParams } from 'msw'
+import { http, HttpResponse, type PathParams } from 'msw'
 
-import {
+import type {
 	Article,
 	ArticleCreateSeed,
 	ArticleEditSeed

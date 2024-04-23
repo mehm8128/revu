@@ -4,7 +4,7 @@ import FieldContainer from '@/components/FieldContainer'
 import { editArticle } from '@/features/article/apis/editArticle'
 import { useArticle } from '@/features/article/apis/fetchArticle'
 import {
-	ArticleCreateSeed,
+	type ArticleCreateSeed,
 	articleCreateSeedSchema,
 	parseId
 } from '@/features/article/model/type'

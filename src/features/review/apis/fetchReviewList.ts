@@ -1,8 +1,8 @@
-import { ReviewList, ReviewListData } from '@/features/review/model/type'
+import type { ReviewList, ReviewListData } from '@/features/review/model/type'
 import { getApiOrigin } from '@/lib/env'
 import { convertReviewFromData } from './converter'
 
-import { ArticleId } from '@/features/article/model/type'
+import type { ArticleId } from '@/features/article/model/type'
 import { fetcher } from '@/lib/fetcher'
 import { useSuspenseQuery } from '@tanstack/react-query'
 

@@ -1,6 +1,11 @@
 import { getApiOrigin } from '@/lib/env'
 import { fetcher } from '@/lib/fetcher'
-import { Review, ReviewData, ReviewEditSeed, ReviewId } from '../model/type'
+import type {
+	Review,
+	ReviewData,
+	ReviewEditSeed,
+	ReviewId
+} from '../model/type'
 import { convertReviewEditSeedToData, convertReviewFromData } from './converter'
 
 // TODO: mutate

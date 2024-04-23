@@ -3,7 +3,7 @@
 import FieldContainer from '@/components/FieldContainer'
 import { postArticle } from '@/features/article/apis/postArticle'
 import {
-	ArticleCreateSeed,
+	type ArticleCreateSeed,
 	articleCreateSeedSchema
 } from '@/features/article/model/type'
 import { valibotResolver } from '@hookform/resolvers/valibot'
