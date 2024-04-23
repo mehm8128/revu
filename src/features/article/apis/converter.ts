@@ -3,6 +3,8 @@ import {
 	ArticleCreateSeed,
 	ArticleCreateSeedData,
 	ArticleData,
+	ArticleEditSeed,
+	ArticleEditSeedData,
 	ArticleListQuery,
 	ArticleListQueryData,
 	parseId
@@ -28,6 +30,16 @@ export const convertArticleFromData = (data: ArticleData): Article => {
 export const convertArticleCreateSeedToData = (
 	seed: ArticleCreateSeed
 ): ArticleCreateSeedData => {
+	return {
+		title: seed.title,
+		description: seed.description,
+		content: seed.content
+	}
+}
+
+export const convertArticleEditSeedToData = (
+	seed: ArticleEditSeed
+): ArticleEditSeedData => {
 	return {
 		title: seed.title,
 		description: seed.description,

@@ -1,63 +1,86 @@
 import {
-	Sample,
-	SampleCreateSeed,
-	SampleCreateSeedData,
-	SampleData,
-	SampleListQuery,
-	SampleListQueryData,
-	parseId
-} from '@/features/sample/model/type'
+	convertArticleCreateSeedToData,
+	convertArticleEditSeedToData,
+	convertArticleFromData,
+	convertArticleListQueryToData
+} from '@/features/article/apis/converter'
 import {
-	convertSampleCreateSeedToData,
-	convertSampleFromData,
-	convertSampleListQueryToData
-} from './converter'
+	Article,
+	ArticleCreateSeed,
+	ArticleCreateSeedData,
+	ArticleData,
+	ArticleEditSeed,
+	ArticleEditSeedData,
+	ArticleListQuery,
+	ArticleListQueryData,
+	parseId
+} from '@/features/article/model/type'
 
 describe('converter', () => {
-	describe('convertSampleListQueryToData', () => {
+	describe('convertArticleListQueryToData', () => {
 		test('サーバー用のデータに変換できる', () => {
-			const sampleListQuery: SampleListQuery = {
-				id: parseId('sample id1')
+			const articleListQuery: ArticleListQuery = {
+				resolved: true
 			}
-			const expected: SampleListQueryData = {
-				id: 'sample id1'
+			const expected: ArticleListQueryData = {
+				resolved: true
 			}
 
-			expect(convertSampleListQueryToData(sampleListQuery)).toEqual(expected)
+			expect(convertArticleListQueryToData(articleListQuery)).toEqual(expected)
 		})
 	})
-	describe('convertSampleFromData', () => {
+	describe('convertArticleFromData', () => {
 		test('フロント用のデータに変換できる', () => {
-			const sample: SampleData = {
-				id: 'sample id1',
-				name: 'sample name',
-				age: 21,
-				bio: 'sample bio'
+			const article: ArticleData = {
+				id: 'article id',
+				title: 'title',
+				description: 'description',
+				content: 'こんにちはおはようございますさようなら。',
+				createdAt: '2021-09-01T00:00:00',
+				updatedAt: '2021-09-01T00:00:00'
 			}
-			const expected: Sample = {
-				id: parseId('sample id1'),
-				name: 'sample name',
-				age: 21,
-				bio: 'sample bio'
+			const expected: Article = {
+				id: parseId('article id'),
+				title: 'title',
+				description: 'description',
+				content: 'こんにちはおはようございますさようなら。',
+				createdAt: new Date('2021-09-01T00:00:00'),
+				updatedAt: new Date('2021-09-01T00:00:00')
 			}
 
-			expect(convertSampleFromData(sample)).toEqual(expected)
+			expect(convertArticleFromData(article)).toEqual(expected)
 		})
 	})
-	describe('convertSampleCreateSeedToData', () => {
+	describe('convertArticleCreateSeedToData', () => {
 		test('サーバー用のデータに変換できる', () => {
-			const sampleSeed: SampleCreateSeed = {
-				name: 'sample name',
-				age: 21,
-				bio: 'sample bio'
+			const articleSeed: ArticleCreateSeed = {
+				title: 'title',
+				description: 'description',
+				content: 'こんにちはおはようございますさようなら。'
 			}
-			const expected: SampleCreateSeedData = {
-				name: 'sample name',
-				age: 21,
-				bio: 'sample bio'
+			const expected: ArticleCreateSeedData = {
+				title: 'title',
+				description: 'description',
+				content: 'こんにちはおはようございますさようなら。'
 			}
 
-			expect(convertSampleCreateSeedToData(sampleSeed)).toEqual(expected)
+			expect(convertArticleCreateSeedToData(articleSeed)).toEqual(expected)
+		})
+	})
+	describe('convertArticleEditSeedToData', () => {
+		test('サーバー用のデータに変換できる', () => {
+			const articleSeed: ArticleEditSeed = {
+				title: 'title',
+				description: 'description',
+				content: 'こんにちはおはようございますさようなら。'
+			}
+			const expected: ArticleEditSeedData = {
+				title: 'title',
+				description: 'description',
+				content: 'こんにちはおはようございますさようなら。'
+			}
+
+			expect(convertArticleEditSeedToData(articleSeed)).toEqual(expected)
 		})
 	})
 })

@@ -43,6 +43,13 @@ export const articleCreateSeedSchema = object({
 })
 export type ArticleCreateSeed = Output<typeof articleCreateSeedSchema>
 
+export const articleEditSeedSchema = object({
+	title: string([minLength(1)]),
+	description: string(),
+	content: string([minLength(1)])
+})
+export type ArticleEditSeed = Output<typeof articleEditSeedSchema>
+
 export const articleDataSchema = object({
 	id: string(),
 	title: string(),
@@ -60,6 +67,13 @@ export const articleCreateSeedDataSchema = object({
 	content: string()
 })
 export type ArticleCreateSeedData = Output<typeof articleCreateSeedDataSchema>
+
+export const articleEditSeedDataSchema = object({
+	title: string(),
+	description: string(),
+	content: string()
+})
+export type ArticleEditSeedData = Output<typeof articleEditSeedDataSchema>
 
 export const articleListQueryDataSchema = object({
 	resolved: optional(boolean())
