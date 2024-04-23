@@ -12,11 +12,11 @@ dependencies:
     specifier: ^1.5.6
     version: 1.5.6(@types/react@18.2.52)(next@14.1.0)(react@18.2.0)
   '@tanstack/react-query':
-    specifier: ^5.18.1
-    version: 5.18.1(react@18.2.0)
+    specifier: ^5.31.0
+    version: 5.31.0(react@18.2.0)
   '@tanstack/react-query-next-experimental':
     specifier: ^5.18.1
-    version: 5.18.1(@tanstack/react-query@5.18.1)(next@14.1.0)(react@18.2.0)
+    version: 5.18.1(@tanstack/react-query@5.31.0)(next@14.1.0)(react@18.2.0)
   jotai:
     specifier: ^2.6.4
     version: 2.6.4(@types/react@18.2.52)(react@18.2.0)
@@ -2534,28 +2534,28 @@ packages:
     dependencies:
       tslib: 2.6.2
 
-  /@tanstack/query-core@5.18.1:
-    resolution: {integrity: sha512-fYhrG7bHgSNbnkIJF2R4VUXb4lF7EBiQjKkDc5wOlB7usdQOIN4LxxHpDxyE3qjqIst1WBGvDtL48T0sHJGKCw==}
+  /@tanstack/query-core@5.31.0:
+    resolution: {integrity: sha512-r1V6RXB1LUGoEp7HGHVK4Tl59kOvAfwI9/kNNwPsb6cR5oHgfn1683sQnoH/3xEDUKOen3fEO90EnGE+OjRw5A==}
     dev: false
 
-  /@tanstack/react-query-next-experimental@5.18.1(@tanstack/react-query@5.18.1)(next@14.1.0)(react@18.2.0):
+  /@tanstack/react-query-next-experimental@5.18.1(@tanstack/react-query@5.31.0)(next@14.1.0)(react@18.2.0):
     resolution: {integrity: sha512-vQj0nKwt/3gaCOIgU3Nzo18L5HbvNX3LuNBq8PTwjrwx9wWdCthNZ1TbaB0uQk3lPs/Yt/7TJ8h6EnmZcgeEag==}
     peerDependencies:
       '@tanstack/react-query': ^5.18.1
       next: ^13 || ^14
       react: ^18.0.0
     dependencies:
-      '@tanstack/react-query': 5.18.1(react@18.2.0)
+      '@tanstack/react-query': 5.31.0(react@18.2.0)
       next: 14.1.0(@babel/core@7.23.7)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: false
 
-  /@tanstack/react-query@5.18.1(react@18.2.0):
-    resolution: {integrity: sha512-PdI07BbsahZ+04PxSuDQsQvBWe008eWFk/YYWzt8fvzt2sALUM0TpAJa/DFpqa7+SSo7j1EQR6Jx6znXNHyaXw==}
+  /@tanstack/react-query@5.31.0(react@18.2.0):
+    resolution: {integrity: sha512-/GUUDFA8yNIYZaSyImkecVfN9mAVw1Y+9LpHkOQ1DdWaKnbLtwfjelh6OF+6EtwQCycH50EjTL68UK3YTMxwvg==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.18.1
+      '@tanstack/query-core': 5.31.0
       react: 18.2.0
     dev: false
 
@@ -5878,7 +5878,7 @@ packages:
       uglify-js:
         optional: true
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.20
+      '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
