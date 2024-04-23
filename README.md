@@ -1,9 +1,4 @@
-# next template
-- Next.js with App Router
-- TanStack Query
-- Jotai
-- Kuma UI
-- Biome
-- Markuplint
-- Vitest
-- msw
+# revu
+文章レビューサービス
+
+共有されたリンクから、他人の文章をGitHubのようにインラインでレビューできるサービス
