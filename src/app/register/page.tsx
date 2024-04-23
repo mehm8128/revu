@@ -1,20 +1,21 @@
 'use client'
-
 import FieldContainer from '@/components/FieldContainer'
 import { postArticle } from '@/features/article/apis/postArticle'
 import {
 	type ArticleCreateSeed,
 	articleCreateSeedSchema
 } from '@/features/article/model/type'
+import Tiptap from '@/features/tiptap/Tiptap'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { VStack } from '@kuma-ui/core'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 export default function Page() {
 	const {
 		register,
 		formState: { errors },
-		handleSubmit
+		handleSubmit,
+		control
 	} = useForm<ArticleCreateSeed>({
 		resolver: valibotResolver(articleCreateSeedSchema),
 		defaultValues: {
@@ -48,7 +49,11 @@ export default function Page() {
 					<textarea {...register('description')} />
 				</FieldContainer>
 				<FieldContainer label="文章" error={errors.content}>
-					<textarea {...register('content')} />
+					<Controller
+						control={control}
+						name="content"
+						render={({ field }) => <Tiptap field={field} />}
+					/>
 				</FieldContainer>
 				<button type="submit">保存</button>
 			</VStack>
