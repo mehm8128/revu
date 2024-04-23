@@ -6,12 +6,13 @@ import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experime
 import { Provider as JotaiProvider } from 'jotai'
 
 import { initMock } from '@/lib/mock'
+import { useState } from 'react'
 
 void initMock()
 
-const queryClient = new QueryClient()
-
 export function Providers({ children }: { children: React.ReactNode }) {
+	const [queryClient] = useState(() => new QueryClient())
+
 	return (
 		<KumaRegistry>
 			<JotaiProvider>

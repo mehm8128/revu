@@ -1,7 +1,6 @@
 import { HttpHandler } from 'msw'
 
-import { sampleHandlers } from '@/features/sample/mock/handlers'
-
+import { articleHandlers } from '@/features/article/mock/handlers'
 import { getApiOrigin } from '@/lib/env'
 
 export const getHandlersArray = (
@@ -11,7 +10,7 @@ export const getHandlersArray = (
 }
 
 const handlers = (apiOrigin: string) => {
-	return [getHandlersArray(sampleHandlers(apiOrigin))].flat()
+	return [getHandlersArray(articleHandlers(apiOrigin))].flat()
 }
 
 export const initMock = async () => {
