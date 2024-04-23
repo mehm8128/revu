@@ -11,7 +11,9 @@ import {
 export const convertReviewFromData = (data: ReviewData): Review => {
 	return {
 		...data,
-		id: parseId(data.id)
+		id: parseId(data.id),
+		createdAt: new Date(data.createdAt),
+		updatedAt: new Date(data.updatedAt)
 	}
 }
 

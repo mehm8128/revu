@@ -32,7 +32,7 @@ export default function Page({
 
 	const onSubmit = async (data: ArticleCreateSeed) => {
 		console.log('保存')
-		await editArticle(data)
+		await editArticle(parseId(articleId), data)
 	}
 
 	return (
