@@ -2,14 +2,9 @@
 
 import { KumaRegistry } from '@kuma-ui/next-plugin/registry'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental'
 import { Provider as JotaiProvider } from 'jotai'
 import { SessionProvider } from 'next-auth/react'
-
-import { initMock } from '@/lib/mock'
 import { useState } from 'react'
-
-void initMock()
 
 export function Providers({ children }: { children: React.ReactNode }) {
 	const [queryClient] = useState(() => new QueryClient())
@@ -19,9 +14,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 			<KumaRegistry>
 				<JotaiProvider>
 					<QueryClientProvider client={queryClient}>
-						<ReactQueryStreamedHydration>
-							{children}
-						</ReactQueryStreamedHydration>
+						{children}
 					</QueryClientProvider>
 				</JotaiProvider>
 			</KumaRegistry>
