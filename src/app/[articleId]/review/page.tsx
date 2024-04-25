@@ -1,9 +1,11 @@
 'use client'
+
 import { useArticle } from '@/features/article/apis/fetchArticle'
 import { parseId } from '@/features/article/model/type'
 import { useReviewList } from '@/features/review/apis/fetchReviewList'
-import { VStack } from '@kuma-ui/core'
+import { Box, VStack } from '@kuma-ui/core'
 import { useEffect, useState } from 'react'
+import ReviewPopup from './_components/ReviewPopup'
 
 export default function Page({
 	params: { articleId }
@@ -37,7 +39,10 @@ export default function Page({
 			<h1>{article.title}</h1>
 			<VStack as="form" gap={20} alignItems="center" onSubmit={onSubmit}>
 				<p>{article.description}</p>
-				<p>{article.content}</p>
+				<Box position="relative">
+					<p>{article.content}</p>
+					<ReviewPopup />
+				</Box>
 				<button type="submit">保存</button>
 			</VStack>
 		</main>

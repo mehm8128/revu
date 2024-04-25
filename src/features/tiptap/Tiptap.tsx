@@ -22,7 +22,6 @@ export default function Tiptap<
 		},
 		onUpdate: ({ editor }) => {
 			field.onChange(editor.getHTML())
-			console.log(editor.getHTML())
 		}
 	})
 
