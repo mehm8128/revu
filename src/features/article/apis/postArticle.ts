@@ -11,7 +11,7 @@ export const postArticle = async (
 	seed: ArticleCreateSeed
 ): Promise<Article> => {
 	const seedData = convertArticleCreateSeedToData(seed)
-	const res: ArticleData = await fetcher(`${getApiOrigin()}/articles`, {
+	const res: ArticleData = await fetcher(`${getApiOrigin()}/api/articles`, {
 		method: 'POST',
 		body: JSON.stringify(seedData)
 	})

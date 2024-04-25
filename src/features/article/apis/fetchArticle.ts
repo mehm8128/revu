@@ -10,14 +10,14 @@ import { fetcher } from '@/lib/fetcher'
 import { useSuspenseQuery } from '@tanstack/react-query'
 
 const fetchArticle = async (id: ArticleId): Promise<Article> => {
-	const res: ArticleData = await fetcher(`${getApiOrigin()}/articles/${id}`)
+	const res: ArticleData = await fetcher(`${getApiOrigin()}/api/articles/${id}`)
 
 	return convertArticleFromData(res)
 }
 
 export const useArticle = (id: ArticleId) => {
 	return useSuspenseQuery({
-		queryKey: ['/articles', id],
+		queryKey: ['articles', id],
 		queryFn: () => fetchArticle(id)
 	})
 }

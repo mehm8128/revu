@@ -17,7 +17,7 @@ export const editArticle = async (
 	seed: ArticleEditSeed
 ): Promise<Article> => {
 	const seedData = convertArticleEditSeedToData(seed)
-	const res: ArticleData = await fetcher(`${getApiOrigin()}/articles/${id}`, {
+	const res: ArticleData = await fetcher(`${getApiOrigin()}/api/articles/${id}`, {
 		method: 'PATCH',
 		body: JSON.stringify(seedData)
 	})

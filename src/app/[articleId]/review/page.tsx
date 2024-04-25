@@ -2,12 +2,14 @@
 
 import { useArticle } from '@/features/article/apis/fetchArticle'
 import { parseId } from '@/features/article/model/type'
+import { useReviewList } from '@/features/review/apis/fetchReviewList'
 import { VStack } from '@kuma-ui/core'
 
 export default function Page({
 	parmas: { articleId }
 }: { parmas: { articleId: string } }) {
 	const { data: article } = useArticle(parseId(articleId))
+	const { data: reviews } = useReviewList(parseId(articleId))
 
 	const onSubmit = async () => {
 		console.log('保存')

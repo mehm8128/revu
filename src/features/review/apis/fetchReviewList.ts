@@ -8,7 +8,7 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 
 const fetchReviewList = async (id: ArticleId): Promise<ReviewList> => {
 	const res: ReviewListData = await fetcher(
-		`${getApiOrigin()}/articles/${id}/reviews`
+		`${getApiOrigin()}/api/articles/${id}/reviews`
 	)
 
 	return res.map(convertReviewFromData)
@@ -16,7 +16,7 @@ const fetchReviewList = async (id: ArticleId): Promise<ReviewList> => {
 
 export const useReviewList = (id: ArticleId) => {
 	return useSuspenseQuery({
-		queryKey: ['articles', id, '/reviews'],
+		queryKey: ['articles', id, 'reviews'],
 		queryFn: () => fetchReviewList(id)
 	})
 }

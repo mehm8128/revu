@@ -8,14 +8,16 @@ import {
 	articleCreateSeedSchema,
 	parseId
 } from '@/features/article/model/type'
+import { useReviewList } from '@/features/review/apis/fetchReviewList'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { VStack } from '@kuma-ui/core'
 import { useForm } from 'react-hook-form'
 
 export default function Page({
-	parmas: { articleId }
-}: { parmas: { articleId: string } }) {
+	params: { articleId }
+}: { params: { articleId: string } }) {
 	const { data: article } = useArticle(parseId(articleId))
+	const { data: reviews } = useReviewList(parseId(articleId))
 
 	const {
 		register,

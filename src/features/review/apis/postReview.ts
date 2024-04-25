@@ -14,7 +14,7 @@ export const postReview = async (
 ): Promise<Review> => {
 	const seedData = convertReviewCreateSeedToData(seed)
 	const res: ReviewData = await fetcher(
-		`${getApiOrigin()}/articles/${articleId}/reviews`,
+		`${getApiOrigin()}/api/articles/${articleId}/reviews`,
 		{
 			method: 'POST',
 			body: JSON.stringify(seedData)

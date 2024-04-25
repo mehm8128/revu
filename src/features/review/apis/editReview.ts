@@ -14,7 +14,7 @@ export const editReview = async (
 	seed: ReviewEditSeed
 ): Promise<Review> => {
 	const seedData = convertReviewEditSeedToData(seed)
-	const res: ReviewData = await fetcher(`${getApiOrigin()}/reviews/${id}`, {
+	const res: ReviewData = await fetcher(`${getApiOrigin()}/api/reviews/${id}`, {
 		method: 'PATCH',
 		body: JSON.stringify(seedData)
 	})
