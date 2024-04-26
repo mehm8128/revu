@@ -9,26 +9,32 @@ import {
 
 export const articles = pgTable('articles', {
 	id: char('id', { length: 32 }).primaryKey(),
-	title: varchar('title', { length: 64 }),
-	description: varchar('description', { length: 128 }),
-	content: text('content'),
-	createdBy: char('created_by', { length: 32 }).references(() => users.id),
-	createdAt: timestamp('created_at'),
-	updatedAt: timestamp('updated_at')
+	title: varchar('title', { length: 64 }).notNull(),
+	description: varchar('description', { length: 128 }).notNull(),
+	content: text('content').notNull(),
+	createdBy: char('created_by', { length: 32 })
+		.references(() => users.id)
+		.notNull(),
+	createdAt: timestamp('created_at').notNull(),
+	updatedAt: timestamp('updated_at').notNull()
 })
 
 export const reviews = pgTable('reviews', {
 	id: char('id', { length: 32 }).primaryKey(),
-	articleId: char('article_id', { length: 32 }).references(() => articles.id),
-	line: integer('line'),
-	comment: text('comment'),
-	createdBy: char('created_by', { length: 32 }).references(() => users.id),
-	createdAt: timestamp('created_at'),
-	updatedAt: timestamp('updated_at')
+	articleId: char('article_id', { length: 32 })
+		.references(() => articles.id)
+		.notNull(),
+	line: integer('line').notNull(),
+	comment: text('comment').notNull(),
+	createdBy: char('created_by', { length: 32 })
+		.references(() => users.id)
+		.notNull(),
+	createdAt: timestamp('created_at').notNull(),
+	updatedAt: timestamp('updated_at').notNull()
 })
 
 export const users = pgTable('users', {
 	id: char('id', { length: 32 }).primaryKey(),
-	name: varchar('name', { length: 32 }),
-	photo: varchar('photo', { length: 128 })
+	name: varchar('name', { length: 32 }).notNull(),
+	photo: varchar('photo', { length: 128 }).notNull()
 })

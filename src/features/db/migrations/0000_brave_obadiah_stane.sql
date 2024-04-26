@@ -1,27 +1,27 @@
 CREATE TABLE IF NOT EXISTS "articles" (
 	"id" char(32) PRIMARY KEY NOT NULL,
-	"title" varchar(64),
-	"description" varchar(128),
-	"content" text,
-	"created_by" char(32),
-	"created_at" timestamp,
-	"updated_at" timestamp
+	"title" varchar(64) NOT NULL,
+	"description" varchar(128) NOT NULL,
+	"content" text NOT NULL,
+	"created_by" char(32) NOT NULL,
+	"created_at" timestamp NOT NULL,
+	"updated_at" timestamp NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "reviews" (
 	"id" char(32) PRIMARY KEY NOT NULL,
-	"article_id" char(32),
-	"line" integer,
-	"comment" text,
-	"created_by" char(32),
-	"created_at" timestamp,
-	"updated_at" timestamp
+	"article_id" char(32) NOT NULL,
+	"line" integer NOT NULL,
+	"comment" text NOT NULL,
+	"created_by" char(32) NOT NULL,
+	"created_at" timestamp NOT NULL,
+	"updated_at" timestamp NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
 	"id" char(32) PRIMARY KEY NOT NULL,
-	"name" varchar(32),
-	"photo" varchar(128)
+	"name" varchar(32) NOT NULL,
+	"photo" varchar(128) NOT NULL
 );
 --> statement-breakpoint
 DO $$ BEGIN
