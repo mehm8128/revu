@@ -1,6 +1,8 @@
 import { mockArticle, mockArticleList } from '@/features/article/mock/data'
+import { db } from '@/features/db'
+export async function GET() {
+	const articleList = await db.query.articles.findMany()
 
-export function GET() {
 	const data = mockArticleList
 	return Response.json(data)
 }

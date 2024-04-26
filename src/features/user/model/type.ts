@@ -16,3 +16,4 @@ export const userSchema = object({
 	photo: string()
 })
 export type User = Output<typeof userSchema>
+export type UserList = User[]
