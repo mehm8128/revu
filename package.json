@@ -10,7 +10,9 @@
 		"biome:ci": "biome ci src",
 		"lint:markup": "markuplint \"**/*.[jt]sx\"",
 		"type-check": "tsc --noEmit",
-		"test": "vitest --passWithNoTests --typecheck"
+		"test": "vitest --passWithNoTests --typecheck",
+		"db:gen": "pnpm drizzle-kit generate:pg --config ./src/features/db/drizzle.config.ts",
+		"db:push": "pnpm drizzle-kit push:pg --config ./src/features/db/drizzle.config.ts"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.3.4",
@@ -19,9 +21,12 @@
 		"@tiptap/pm": "^2.3.0",
 		"@tiptap/react": "^2.3.0",
 		"@tiptap/starter-kit": "^2.3.0",
+		"dotenv": "^16.4.5",
+		"drizzle-orm": "^0.30.9",
 		"jotai": "^2.6.4",
 		"next": "^14.1.0",
 		"next-auth": "^4.24.7",
+		"postgres": "^3.4.4",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-error-boundary": "^4.0.12",
@@ -43,6 +48,7 @@
 		"@types/react": "18.2.52",
 		"@types/react-dom": "18.2.18",
 		"@vitejs/plugin-react": "^4.2.1",
+		"drizzle-kit": "^0.20.17",
 		"jsdom": "^24.0.0",
 		"markuplint": "^4.0.0",
 		"next-router-mock": "^0.9.11",
