@@ -13,7 +13,7 @@ import {
 	type ArticleEditSeedData,
 	type ArticleListQuery,
 	type ArticleListQueryData,
-	parseId
+	parseArticleId
 } from '@/features/article/model/type'
 
 describe('converter', () => {
@@ -40,7 +40,7 @@ describe('converter', () => {
 				updatedAt: '2021-09-01T00:00:00'
 			}
 			const expected: Article = {
-				id: parseId('article id'),
+				id: parseArticleId('article id'),
 				title: 'title',
 				description: 'description',
 				content: 'こんにちはおはようございますさようなら。',

@@ -1,4 +1,5 @@
 import { mockReview } from '@/features/review/mock/data'
+import { parseUserId } from '@/features/user/model/type'
 import { safeParse } from 'valibot'
 import {
 	type ReviewCreateSeed,
@@ -14,7 +15,9 @@ describe('type', () => {
 		})
 		test('内容がないときにinvalid', () => {
 			const reviewSeed: ReviewCreateSeed = {
-				comment: ''
+				line: 1,
+				comment: '',
+				createdBy: parseUserId('userId')
 			}
 			expect(safeParse(reviewCreateSeedSchema, reviewSeed).success).toBe(false)
 		})

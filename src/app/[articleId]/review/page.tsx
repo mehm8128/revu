@@ -1,7 +1,7 @@
 'use client'
 
 import { useArticle } from '@/features/article/apis/fetchArticle'
-import { parseId } from '@/features/article/model/type'
+import { parseArticleId } from '@/features/article/model/type'
 import { useReviewList } from '@/features/review/apis/fetchReviewList'
 import { Box, VStack } from '@kuma-ui/core'
 import { type MouseEvent, useEffect, useRef, useState } from 'react'
@@ -15,8 +15,8 @@ export interface Coordinate {
 export default function Page({
 	params: { articleId }
 }: { params: { articleId: string } }) {
-	const { data: article } = useArticle(parseId(articleId))
-	const { data: reviews } = useReviewList(parseId(articleId))
+	const { data: article } = useArticle(parseArticleId(articleId))
+	const { data: reviews } = useReviewList(parseArticleId(articleId))
 
 	const [selectedText, setSelectedText] = useState('')
 	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 })

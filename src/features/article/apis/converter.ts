@@ -7,7 +7,7 @@ import {
 	type ArticleEditSeedData,
 	type ArticleListQuery,
 	type ArticleListQueryData,
-	parseId
+	parseArticleId
 } from '@/features/article/model/type'
 
 export const convertArticleListQueryToData = (
@@ -21,7 +21,7 @@ export const convertArticleListQueryToData = (
 export const convertArticleFromData = (data: ArticleData): Article => {
 	return {
 		...data,
-		id: parseId(data.id),
+		id: parseArticleId(data.id),
 		createdAt: new Date(data.createdAt),
 		updatedAt: new Date(data.updatedAt)
 	}

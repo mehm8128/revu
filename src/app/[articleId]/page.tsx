@@ -6,7 +6,7 @@ import { useArticle } from '@/features/article/apis/fetchArticle'
 import {
 	type ArticleCreateSeed,
 	articleCreateSeedSchema,
-	parseId
+	parseArticleId
 } from '@/features/article/model/type'
 import { useReviewList } from '@/features/review/apis/fetchReviewList'
 import { valibotResolver } from '@hookform/resolvers/valibot'
@@ -16,8 +16,8 @@ import { useForm } from 'react-hook-form'
 export default function Page({
 	params: { articleId }
 }: { params: { articleId: string } }) {
-	const { data: article } = useArticle(parseId(articleId))
-	const { data: reviews } = useReviewList(parseId(articleId))
+	const { data: article } = useArticle(parseArticleId(articleId))
+	const { data: reviews } = useReviewList(parseArticleId(articleId))
 
 	const {
 		register,
@@ -34,7 +34,7 @@ export default function Page({
 
 	const onSubmit = async (data: ArticleCreateSeed) => {
 		console.log('保存')
-		await editArticle(parseId(articleId), data)
+		await editArticle(parseArticleId(articleId), data)
 	}
 
 	return (

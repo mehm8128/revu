@@ -1,11 +1,11 @@
 import {
 	type Article,
 	type ArticleList,
-	parseId
+	parseArticleId
 } from '@/features/article/model/type'
 
 export const mockArticle: Article = {
-	id: parseId('articleId'),
+	id: parseArticleId('articleId'),
 	title: 'title',
 	description: 'description',
 	content: 'こんにちはおはようございますさようなら。',
@@ -15,7 +15,7 @@ export const mockArticle: Article = {
 
 export const mockArticleList: ArticleList = [
 	{
-		id: parseId('articleId1'),
+		id: parseArticleId('articleId1'),
 		title: 'title1',
 		description: 'description1',
 		content: 'こんにちはおはようございますさようなら。',
@@ -23,7 +23,7 @@ export const mockArticleList: ArticleList = [
 		updatedAt: new Date('2021-09-01T00:00:00')
 	},
 	{
-		id: parseId('articleId2'),
+		id: parseArticleId('articleId2'),
 		title: 'title2',
 		description: 'description2',
 		content: 'おやすみなさい',
@@ -31,7 +31,7 @@ export const mockArticleList: ArticleList = [
 		updatedAt: new Date('2021-09-01T00:00:00')
 	},
 	{
-		id: parseId('articleId3'),
+		id: parseArticleId('articleId3'),
 		title: 'title3',
 		description: 'description3',
 		content: 'プログラミングをしています。',

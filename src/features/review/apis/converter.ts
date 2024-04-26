@@ -1,3 +1,4 @@
+import { parseArticleId } from '@/features/article/model/type'
 import {
 	type Review,
 	type ReviewCreateSeed,
@@ -5,13 +6,16 @@ import {
 	type ReviewData,
 	type ReviewEditSeed,
 	type ReviewEditSeedData,
-	parseId
+	parseReviewId
 } from '@/features/review/model/type'
+import { parseUserId } from '@/features/user/model/type'
 
 export const convertReviewFromData = (data: ReviewData): Review => {
 	return {
 		...data,
-		id: parseId(data.id),
+		id: parseReviewId(data.id),
+		articleId: parseArticleId(data.articleId),
+		createdBy: parseUserId(data.createdBy),
 		createdAt: new Date(data.createdAt),
 		updatedAt: new Date(data.updatedAt)
 	}
@@ -21,7 +25,9 @@ export const convertReviewCreateSeedToData = (
 	seed: ReviewCreateSeed
 ): ReviewCreateSeedData => {
 	return {
-		comment: seed.comment
+		line: seed.line,
+		comment: seed.comment,
+		createdBy: seed.createdBy
 	}
 }
 

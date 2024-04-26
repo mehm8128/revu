@@ -1,3 +1,4 @@
+import { parseArticleId } from '@/features/article/model/type'
 import {
 	type Review,
 	type ReviewCreateSeed,
@@ -5,8 +6,9 @@ import {
 	type ReviewData,
 	type ReviewEditSeed,
 	type ReviewEditSeedData,
-	parseId
+	parseReviewId
 } from '@/features/review/model/type'
+import { parseUserId } from '@/features/user/model/type'
 import {
 	convertReviewCreateSeedToData,
 	convertReviewEditSeedToData,
@@ -17,14 +19,20 @@ describe('converter', () => {
 	describe('convertReviewFromData', () => {
 		test('フロント用のデータに変換できる', () => {
 			const review: ReviewData = {
-				id: 'review id1',
+				id: 'reviewId1',
+				line: 1,
+				articleId: 'articleId1',
 				comment: 'comment',
+				createdBy: 'userId1',
 				createdAt: '2021-01-01T00:00:00Z',
 				updatedAt: '2021-01-01T00:00:00Z'
 			}
 			const expected: Review = {
-				id: parseId('review id1'),
+				id: parseReviewId('reviewId1'),
+				articleId: parseArticleId('articleId1'),
+				line: 1,
 				comment: 'comment',
+				createdBy: parseUserId('userId1'),
 				createdAt: new Date('2021-01-01T00:00:00Z'),
 				updatedAt: new Date('2021-01-01T00:00:00Z')
 			}
@@ -35,10 +43,14 @@ describe('converter', () => {
 	describe('convertReviewCreateSeedToData', () => {
 		test('サーバー用のデータに変換できる', () => {
 			const reviewSeed: ReviewCreateSeed = {
-				comment: 'comment'
+				line: 1,
+				comment: 'comment',
+				createdBy: parseUserId('userId')
 			}
 			const expected: ReviewCreateSeedData = {
-				comment: 'comment'
+				line: 1,
+				comment: 'comment',
+				createdBy: 'userId'
 			}
 
 			expect(convertReviewCreateSeedToData(reviewSeed)).toEqual(expected)

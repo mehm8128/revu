@@ -12,7 +12,7 @@ import {
 
 export const articleId = brand(string(), 'articleId')
 export type ArticleId = Output<typeof articleId>
-export const parseId = (id: string) => {
+export const parseArticleId = (id: string) => {
 	const result = safeParse(articleId, id)
 	if (!result.success) {
 		throw new Error('invalid id')
