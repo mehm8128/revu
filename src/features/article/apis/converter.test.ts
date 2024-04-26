@@ -15,6 +15,7 @@ import {
 	type ArticleListQueryData,
 	parseArticleId
 } from '@/features/article/model/type'
+import { parseUserId } from '@/features/user/model/type'
 
 describe('converter', () => {
 	describe('convertArticleListQueryToData', () => {
@@ -32,10 +33,11 @@ describe('converter', () => {
 	describe('convertArticleFromData', () => {
 		test('フロント用のデータに変換できる', () => {
 			const article: ArticleData = {
-				id: 'article id',
+				id: 'articleId',
 				title: 'title',
 				description: 'description',
 				content: 'こんにちはおはようございますさようなら。',
+				createdBy: 'userId',
 				createdAt: '2021-09-01T00:00:00',
 				updatedAt: '2021-09-01T00:00:00'
 			}
@@ -44,6 +46,7 @@ describe('converter', () => {
 				title: 'title',
 				description: 'description',
 				content: 'こんにちはおはようございますさようなら。',
+				createdBy: parseUserId('userId'),
 				createdAt: new Date('2021-09-01T00:00:00'),
 				updatedAt: new Date('2021-09-01T00:00:00')
 			}
@@ -56,12 +59,14 @@ describe('converter', () => {
 			const articleSeed: ArticleCreateSeed = {
 				title: 'title',
 				description: 'description',
-				content: 'こんにちはおはようございますさようなら。'
+				content: 'こんにちはおはようございますさようなら。',
+				createdBy: parseUserId('userId')
 			}
 			const expected: ArticleCreateSeedData = {
 				title: 'title',
 				description: 'description',
-				content: 'こんにちはおはようございますさようなら。'
+				content: 'こんにちはおはようございますさようなら。',
+				createdBy: 'userId'
 			}
 
 			expect(convertArticleCreateSeedToData(articleSeed)).toEqual(expected)

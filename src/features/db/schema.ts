@@ -2,13 +2,14 @@ import {
 	char,
 	integer,
 	pgTable,
+	serial,
 	text,
 	timestamp,
 	varchar
 } from 'drizzle-orm/pg-core'
 
 export const articles = pgTable('articles', {
-	id: char('id', { length: 32 }).primaryKey(),
+	id: serial('id').primaryKey(),
 	title: varchar('title', { length: 64 }).notNull(),
 	description: varchar('description', { length: 128 }).notNull(),
 	content: text('content').notNull(),
@@ -20,7 +21,7 @@ export const articles = pgTable('articles', {
 })
 
 export const reviews = pgTable('reviews', {
-	id: char('id', { length: 32 }).primaryKey(),
+	id: serial('id').primaryKey(),
 	articleId: char('article_id', { length: 32 })
 		.references(() => articles.id)
 		.notNull(),
@@ -34,7 +35,7 @@ export const reviews = pgTable('reviews', {
 })
 
 export const users = pgTable('users', {
-	id: char('id', { length: 32 }).primaryKey(),
+	id: char('id').primaryKey(),
 	name: varchar('name', { length: 32 }).notNull(),
 	photo: varchar('photo', { length: 128 }).notNull()
 })

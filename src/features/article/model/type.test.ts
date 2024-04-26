@@ -1,4 +1,5 @@
 import { mockArticle } from '@/features/article/mock/data'
+import { parseUserId } from '@/features/user/model/type'
 import { safeParse } from 'valibot'
 import {
 	type ArticleCreateSeed,
@@ -16,7 +17,8 @@ describe('type', () => {
 			const articleSeed: ArticleCreateSeed = {
 				title: 'title',
 				description: 'description',
-				content: ''
+				content: '',
+				createdBy: parseUserId('userId')
 			}
 			expect(safeParse(articleCreateSeedSchema, articleSeed).success).toBe(
 				false

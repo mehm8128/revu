@@ -1,3 +1,4 @@
+import { userId } from '@/features/user/model/type'
 import {
 	type Output,
 	boolean,
@@ -25,6 +26,7 @@ export const articleSchema = object({
 	title: string(),
 	description: string(),
 	content: string(),
+	createdBy: userId,
 	createdAt: date(),
 	updatedAt: date()
 })
@@ -39,7 +41,8 @@ export type ArticleListQuery = Output<typeof articleListQuerySchema>
 export const articleCreateSeedSchema = object({
 	title: string([minLength(1)]),
 	description: string(),
-	content: string([minLength(1)])
+	content: string([minLength(1)]),
+	createdBy: userId
 })
 export type ArticleCreateSeed = Output<typeof articleCreateSeedSchema>
 
@@ -55,6 +58,7 @@ export const articleDataSchema = object({
 	title: string(),
 	description: string(),
 	content: string(),
+	createdBy: string(),
 	createdAt: string(),
 	updatedAt: string()
 })
@@ -64,7 +68,8 @@ export type ArticleListData = ArticleData[]
 export const articleCreateSeedDataSchema = object({
 	title: string(),
 	description: string(),
-	content: string()
+	content: string(),
+	createdBy: string()
 })
 export type ArticleCreateSeedData = Output<typeof articleCreateSeedDataSchema>
 

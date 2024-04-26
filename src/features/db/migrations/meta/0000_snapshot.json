@@ -1,5 +1,5 @@
 {
-  "id": "7e068a8c-25e6-44e4-b805-187e0979185f",
+  "id": "21f23429-1bec-44bf-b163-2d7faa6bc910",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -10,7 +10,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "char(32)",
+          "type": "serial",
           "primaryKey": true,
           "notNull": true
         },
@@ -76,7 +76,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "char(32)",
+          "type": "serial",
           "primaryKey": true,
           "notNull": true
         },
@@ -155,7 +155,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "char(32)",
+          "type": "char",
           "primaryKey": true,
           "notNull": true
         },

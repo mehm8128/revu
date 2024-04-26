@@ -34,6 +34,7 @@ export type Review = Output<typeof reviewSchema>
 export type ReviewList = Review[]
 
 export const reviewCreateSeedSchema = object({
+	articleId: articleId,
 	line: number(),
 	comment: string([minLength(1)]),
 	createdBy: userId
@@ -58,6 +59,7 @@ export type ReviewData = Output<typeof reviewDataSchema>
 export type ReviewListData = ReviewData[]
 
 export const reviewCreateSeedDataSchema = object({
+	articleId: string(),
 	line: number(),
 	comment: string(),
 	createdBy: string()

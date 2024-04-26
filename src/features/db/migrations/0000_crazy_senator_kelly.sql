@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS "articles" (
-	"id" char(32) PRIMARY KEY NOT NULL,
+	"id" serial PRIMARY KEY NOT NULL,
 	"title" varchar(64) NOT NULL,
 	"description" varchar(128) NOT NULL,
 	"content" text NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS "articles" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "reviews" (
-	"id" char(32) PRIMARY KEY NOT NULL,
+	"id" serial PRIMARY KEY NOT NULL,
 	"article_id" char(32) NOT NULL,
 	"line" integer NOT NULL,
 	"comment" text NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS "reviews" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
-	"id" char(32) PRIMARY KEY NOT NULL,
+	"id" "char" PRIMARY KEY NOT NULL,
 	"name" varchar(32) NOT NULL,
 	"photo" varchar(128) NOT NULL
 );
