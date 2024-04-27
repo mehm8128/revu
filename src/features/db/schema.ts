@@ -22,7 +22,7 @@ export const articles = pgTable('articles', {
 
 export const reviews = pgTable('reviews', {
 	id: serial('id').primaryKey(),
-	articleId: char('article_id', { length: 32 })
+	articleId: integer('article_id')
 		.references(() => articles.id)
 		.notNull(),
 	line: integer('line').notNull(),
