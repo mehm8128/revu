@@ -1,5 +1,6 @@
 'use client'
 
+import { deleteArticle } from '@/features/article/apis/deleteArticle'
 import type { Article } from '@/features/article/model/type'
 import { dateToString } from '@/lib/date'
 import { Button, HStack, VStack } from '@kuma-ui/core'
@@ -9,7 +10,7 @@ export default function ArticleItem({ article }: { article: Article }) {
 	const handleDeleteArticle = async () => {
 		const result = confirm('本当にこの文章を削除しますか？')
 		if (!result) return
-		// TODO: impl
+		await deleteArticle(article.id)
 	}
 
 	return (

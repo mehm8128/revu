@@ -25,7 +25,6 @@ export const convertReviewCreateSeedToData = (
 	seed: ReviewCreateSeed
 ): ReviewCreateSeedData => {
 	return {
-		articleId: seed.articleId,
 		line: seed.line,
 		comment: seed.comment,
 		createdBy: seed.createdBy

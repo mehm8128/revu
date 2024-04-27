@@ -21,3 +21,12 @@ export async function PATCH(
 	const data = mockReview
 	return Response.json(data)
 }
+
+export async function DELETE(
+	req: Request,
+	{ params: { reviewId } }: { params: { reviewId: string } }
+) {
+	await db.delete(reviews).where(eq(reviews.id, Number(reviewId)))
+
+	return Response.json({ message: 'ok' })
+}

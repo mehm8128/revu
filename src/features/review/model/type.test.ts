@@ -1,4 +1,3 @@
-import { parseArticleId } from '@/features/article/model/type'
 import { mockReview } from '@/features/review/mock/data'
 import { parseUserId } from '@/features/user/model/type'
 import { safeParse } from 'valibot'
@@ -16,7 +15,6 @@ describe('type', () => {
 		})
 		test('内容がないときにinvalid', () => {
 			const reviewSeed: ReviewCreateSeed = {
-				articleId: parseArticleId('articleId'),
 				line: 1,
 				comment: '',
 				createdBy: parseUserId('userId')

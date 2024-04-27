@@ -43,13 +43,11 @@ describe('converter', () => {
 	describe('convertReviewCreateSeedToData', () => {
 		test('サーバー用のデータに変換できる', () => {
 			const reviewSeed: ReviewCreateSeed = {
-				articleId: parseArticleId('articleId'),
 				line: 1,
 				comment: 'comment',
 				createdBy: parseUserId('userId')
 			}
 			const expected: ReviewCreateSeedData = {
-				articleId: 'articleId',
 				line: 1,
 				comment: 'comment',
 				createdBy: 'userId'

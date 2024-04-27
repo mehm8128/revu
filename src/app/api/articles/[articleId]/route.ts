@@ -33,3 +33,12 @@ export async function PATCH(
 	const data = mockArticle
 	return Response.json(data)
 }
+
+export async function DELETE(
+	req: Request,
+	{ params: { articleId } }: { params: { articleId: string } }
+) {
+	await db.delete(articles).where(eq(articles.id, Number(articleId)))
+
+	return Response.json({ message: 'ok' })
+}
