@@ -15,8 +15,8 @@ export interface Coordinate {
 export default function Page({
 	params: { articleId }
 }: { params: { articleId: string } }) {
-	const { data: article } = useArticle(parseArticleId(articleId))
-	const { data: reviews } = useReviewList(parseArticleId(articleId))
+	const { data: article } = useArticle(parseArticleId(Number(articleId)))
+	const { data: reviews } = useReviewList(parseArticleId(Number(articleId)))
 
 	const [selectedText, setSelectedText] = useState('')
 	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 })

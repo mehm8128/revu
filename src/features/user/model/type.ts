@@ -17,3 +17,5 @@ export const userSchema = object({
 })
 export type User = Output<typeof userSchema>
 export type UserList = User[]
+
+//TODO: サーバーの型定義

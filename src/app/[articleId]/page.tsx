@@ -16,8 +16,8 @@ import { useForm } from 'react-hook-form'
 export default function Page({
 	params: { articleId }
 }: { params: { articleId: string } }) {
-	const { data: article } = useArticle(parseArticleId(articleId))
-	const { data: reviews } = useReviewList(parseArticleId(articleId))
+	const { data: article } = useArticle(parseArticleId(Number(articleId)))
+	const { data: reviews } = useReviewList(parseArticleId(Number(articleId)))
 
 	const {
 		register,
@@ -34,7 +34,7 @@ export default function Page({
 
 	const onSubmit = async (data: ArticleCreateSeed) => {
 		console.log('保存')
-		await editArticle(parseArticleId(articleId), data)
+		await editArticle(parseArticleId(Number(articleId)), data)
 	}
 
 	return (

@@ -29,6 +29,9 @@ dependencies:
   drizzle-orm:
     specifier: ^0.30.9
     version: 0.30.9(@types/react@18.2.52)(postgres@3.4.4)(react@18.2.0)
+  drizzle-valibot:
+    specifier: ^0.2.0
+    version: 0.2.0(drizzle-orm@0.30.9)(valibot@0.27.1)
   jotai:
     specifier: ^2.6.4
     version: 2.6.4(@types/react@18.2.52)(react@18.2.0)
@@ -4005,6 +4008,16 @@ packages:
       '@types/react': 18.2.52
       postgres: 3.4.4
       react: 18.2.0
+    dev: false
+
+  /drizzle-valibot@0.2.0(drizzle-orm@0.30.9)(valibot@0.27.1):
+    resolution: {integrity: sha512-+JTZZN52fFv20kGTXI1KGpysdCiedaTDpWQ6lqnxX2DD5U5tJfGPB2ROjHFjbLzK4XiH98MOhKZf174orBQAew==}
+    peerDependencies:
+      drizzle-orm: '>=0.23.13'
+      valibot: '>=0.20'
+    dependencies:
+      drizzle-orm: 0.30.9(@types/react@18.2.52)(postgres@3.4.4)(react@18.2.0)
+      valibot: 0.27.1
     dev: false
 
   /eastasianwidth@0.2.0:

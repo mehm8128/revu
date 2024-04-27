@@ -1,5 +1,7 @@
-import { articleId } from '@/features/article/model/type'
-import { userId } from '@/features/user/model/type'
+import { articleId, parseArticleId } from '@/features/article/model/type'
+import { reviews } from '@/features/db/schema'
+import { parseUserId, userId } from '@/features/user/model/type'
+import { createInsertSchema, createSelectSchema } from 'drizzle-valibot'
 import {
 	type Output,
 	brand,
@@ -7,13 +9,15 @@ import {
 	minLength,
 	number,
 	object,
+	pick,
 	safeParse,
-	string
+	string,
+	transform
 } from 'valibot'
 
-export const reviewId = brand(string(), 'reviewId')
+export const reviewId = brand(number(), 'reviewId')
 export type ReviewId = Output<typeof reviewId>
-export const parseReviewId = (id: string) => {
+export const parseReviewId = (id: number) => {
 	const result = safeParse(reviewId, id)
 	if (!result.success) {
 		throw new Error('invalid id')
@@ -21,15 +25,25 @@ export const parseReviewId = (id: string) => {
 	return result.output
 }
 
-export const reviewSchema = object({
-	id: reviewId,
-	articleId: articleId,
-	line: number(),
-	comment: string(),
-	createdBy: userId,
-	createdAt: date(),
-	updatedAt: date()
-})
+export const reviewSchema = transform(
+	object({
+		id: reviewId,
+		articleId: articleId,
+		line: number(),
+		comment: string(),
+		createdBy: userId,
+		createdAt: date(),
+		updatedAt: date()
+	}),
+	({ id, articleId, createdBy, createdAt, updatedAt, ...rest }) => ({
+		id: parseReviewId(id),
+		articleId: parseArticleId(id),
+		createdBy: parseUserId(createdBy),
+		createdAt: new Date(createdAt),
+		updatedAt: new Date(updatedAt),
+		...rest
+	})
+)
 export type Review = Output<typeof reviewSchema>
 export type ReviewList = Review[]
 
@@ -45,26 +59,22 @@ export const reviewEditSeedSchema = object({
 })
 export type ReviewEditSeed = Output<typeof reviewEditSeedSchema>
 
-export const reviewDataSchema = object({
-	id: string(),
-	articleId: string(),
-	line: number(),
-	comment: string(),
-	createdBy: string(),
+const reviewDataSchema = createSelectSchema(reviews, {
 	createdAt: string(),
 	updatedAt: string()
 })
+
 export type ReviewData = Output<typeof reviewDataSchema>
 export type ReviewListData = ReviewData[]
 
-export const reviewCreateSeedDataSchema = object({
-	line: number(),
-	comment: string(),
-	createdBy: string()
-})
+export const reviewCreateSeedDataSchema = pick(createInsertSchema(reviews), [
+	'line',
+	'comment',
+	'createdBy'
+])
 export type ReviewCreateSeedData = Output<typeof reviewCreateSeedDataSchema>
 
-export const reviewEditSeedDataSchema = object({
-	comment: string()
-})
+export const reviewEditSeedDataSchema = pick(createInsertSchema(reviews), [
+	'comment'
+])
 export type ReviewEditSeedData = Output<typeof reviewEditSeedDataSchema>

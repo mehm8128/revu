@@ -1,4 +1,3 @@
-import { parseArticleId } from '@/features/article/model/type'
 import {
 	type Review,
 	type ReviewCreateSeed,
@@ -6,35 +5,23 @@ import {
 	type ReviewData,
 	type ReviewEditSeed,
 	type ReviewEditSeedData,
-	parseReviewId
+	reviewCreateSeedSchema,
+	reviewSchema
 } from '@/features/review/model/type'
-import { parseUserId } from '@/features/user/model/type'
+import { parse } from 'valibot'
 
 export const convertReviewFromData = (data: ReviewData): Review => {
-	return {
-		...data,
-		id: parseReviewId(data.id),
-		articleId: parseArticleId(data.articleId),
-		createdBy: parseUserId(data.createdBy),
-		createdAt: new Date(data.createdAt),
-		updatedAt: new Date(data.updatedAt)
-	}
+	return parse(reviewSchema, data)
 }
 
 export const convertReviewCreateSeedToData = (
 	seed: ReviewCreateSeed
 ): ReviewCreateSeedData => {
-	return {
-		line: seed.line,
-		comment: seed.comment,
-		createdBy: seed.createdBy
-	}
+	return parse(reviewCreateSeedSchema, seed)
 }
 
 export const convertReviewEditSeedToData = (
 	seed: ReviewEditSeed
 ): ReviewEditSeedData => {
-	return {
-		comment: seed.comment
-	}
+	return seed
 }

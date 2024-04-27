@@ -4,8 +4,8 @@ import type { Review } from '@/features/review/model/type'
 import { parseUserId } from '@/features/user/model/type'
 
 export const mockReview: Review = {
-	id: parseReviewId('reviewId'),
-	articleId: parseArticleId('articleId'),
+	id: parseReviewId(1),
+	articleId: parseArticleId(1),
 	line: 1,
 	comment: 'comment',
 	createdBy: parseUserId('userId'),
@@ -15,8 +15,8 @@ export const mockReview: Review = {
 
 export const mockReviewList: ReviewList = [
 	{
-		id: parseReviewId('reviewId1'),
-		articleId: parseArticleId('articleId1'),
+		id: parseReviewId(1),
+		articleId: parseArticleId(1),
 		line: 1,
 		comment: 'comment1',
 		createdBy: parseUserId('userId1'),
@@ -24,8 +24,8 @@ export const mockReviewList: ReviewList = [
 		updatedAt: new Date('2021-01-01T00:00:00Z')
 	},
 	{
-		id: parseReviewId('reviewId2'),
-		articleId: parseArticleId('articleId2'),
+		id: parseReviewId(2),
+		articleId: parseArticleId(2),
 		line: 2,
 		comment: 'comment2',
 		createdBy: parseUserId('userId2'),
@@ -33,8 +33,8 @@ export const mockReviewList: ReviewList = [
 		updatedAt: new Date('2021-01-01T00:00:00Z')
 	},
 	{
-		id: parseReviewId('reviewId3'),
-		articleId: parseArticleId('articleId3'),
+		id: parseReviewId(3),
+		articleId: parseArticleId(3),
 		line: 3,
 		comment: 'comment3',
 		createdBy: parseUserId('userId3'),

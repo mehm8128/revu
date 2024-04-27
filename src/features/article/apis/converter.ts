@@ -7,9 +7,10 @@ import {
 	type ArticleEditSeedData,
 	type ArticleListQuery,
 	type ArticleListQueryData,
-	parseArticleId
+	articleCreateSeedDataSchema,
+	articleSchema
 } from '@/features/article/model/type'
-import { parseUserId } from '@/features/user/model/type'
+import { parse } from 'valibot'
 
 export const convertArticleListQueryToData = (
 	query?: Partial<ArticleListQuery>
@@ -20,32 +21,17 @@ export const convertArticleListQueryToData = (
 }
 
 export const convertArticleFromData = (data: ArticleData): Article => {
-	return {
-		...data,
-		id: parseArticleId(data.id),
-		createdBy: parseUserId(data.createdBy),
-		createdAt: new Date(data.createdAt),
-		updatedAt: new Date(data.updatedAt)
-	}
+	return parse(articleSchema, data)
 }
 
 export const convertArticleCreateSeedToData = (
 	seed: ArticleCreateSeed
 ): ArticleCreateSeedData => {
-	return {
-		title: seed.title,
-		description: seed.description,
-		content: seed.content,
-		createdBy: seed.createdBy
-	}
+	return parse(articleCreateSeedDataSchema, seed)
 }
 
 export const convertArticleEditSeedToData = (
 	seed: ArticleEditSeed
 ): ArticleEditSeedData => {
-	return {
-		title: seed.title,
-		description: seed.description,
-		content: seed.content
-	}
+	return seed
 }

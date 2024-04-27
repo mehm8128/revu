@@ -13,7 +13,7 @@ export const articles = pgTable('articles', {
 	title: varchar('title', { length: 64 }).notNull(),
 	description: varchar('description', { length: 128 }).notNull(),
 	content: text('content').notNull(),
-	createdBy: char('created_by', { length: 32 })
+	createdBy: char('created_by')
 		.references(() => users.id)
 		.notNull(),
 	createdAt: timestamp('created_at').notNull(),
@@ -27,7 +27,7 @@ export const reviews = pgTable('reviews', {
 		.notNull(),
 	line: integer('line').notNull(),
 	comment: text('comment').notNull(),
-	createdBy: char('created_by', { length: 32 })
+	createdBy: char('created_by')
 		.references(() => users.id)
 		.notNull(),
 	createdAt: timestamp('created_at').notNull(),
