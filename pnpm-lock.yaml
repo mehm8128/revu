@@ -116,8 +116,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0(typescript@5.3.3)
   next-router-mock:
-    specifier: ^0.9.11
-    version: 0.9.11(next@14.1.0)(react@18.2.0)
+    specifier: ^0.9.13
+    version: 0.9.13(next@14.1.0)(react@18.2.0)
   vitest:
     specifier: ^1.2.2
     version: 1.2.2(@types/node@20.11.16)(jsdom@24.0.0)(sass@1.75.0)
@@ -5380,8 +5380,8 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /next-router-mock@0.9.11(next@14.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-3w7DdXDtjsBbPvHk3kBtmzyvn5BwRh133JM4G3gdjqt8zBzs08dvdU6EEPMZIiQv3mgxZwp7nFKGYEmUnMV/rQ==}
+  /next-router-mock@0.9.13(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-906n2RRaE6Y28PfYJbaz5XZeJ6Tw8Xz1S6E31GGwZ0sXB6/XjldD1/2azn1ZmBmRk5PQRkzjg+n+RHZe5xQzWA==}
     peerDependencies:
       next: '>=10.0.0'
       react: '>=17.0.0'
