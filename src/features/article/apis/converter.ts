@@ -21,6 +21,7 @@ export const convertArticleListQueryToData = (
 }
 
 export const convertArticleFromData = (data: ArticleData): Article => {
+	console.log('data', data)
 	return parse(articleSchema, data)
 }
 

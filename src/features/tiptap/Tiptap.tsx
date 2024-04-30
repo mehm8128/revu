@@ -8,7 +8,7 @@ import type {
 	FieldValues
 } from 'react-hook-form'
 
-import styles from './Tiptap.module.scss'
+import './Tiptap.scss'
 
 export default function Tiptap<
 	TFieldValues extends FieldValues = FieldValues,
@@ -29,7 +29,5 @@ export default function Tiptap<
 		return null
 	}
 
-	return (
-		<EditorContent editor={editor} ref={field.ref} className={styles.tiptap} />
-	)
+	return <EditorContent editor={editor} ref={field.ref} />
 }

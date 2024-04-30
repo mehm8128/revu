@@ -3,14 +3,10 @@
 import { useArticle } from '@/features/article/apis/fetchArticle'
 import { parseArticleId } from '@/features/article/model/type'
 import { useReviewList } from '@/features/review/apis/fetchReviewList'
-import { Box, VStack } from '@kuma-ui/core'
-import { type MouseEvent, useEffect, useRef, useState } from 'react'
-import ReviewPopup from './_components/ReviewPopup'
-
-export interface Coordinate {
-	x: number
-	y: number
-}
+import type { ReviewCreateSeed } from '@/features/review/model/type'
+import { Text, VStack } from '@kuma-ui/core'
+import { useState } from 'react'
+import ArticleLine, { type ArticleLineType } from './_components/ArticleLine'
 
 export default function Page({
 	params: { articleId }
@@ -18,55 +14,40 @@ export default function Page({
 	const { data: article } = useArticle(parseArticleId(Number(articleId)))
 	const { data: reviews } = useReviewList(parseArticleId(Number(articleId)))
 
-	const [selectedText, setSelectedText] = useState('')
-	const [coordinate, setCoordinate] = useState<Coordinate>({ x: 0, y: 0 })
-	const [pendingReviews, setPendingReviews] = useState<string[]>([])
-	const ref = useRef<HTMLDivElement | null>(null)
+	const splitedContents: ArticleLineType[] = article.content
+		.split('\n')
+		.map((content, i) => ({
+			content,
+			line: i,
+			review: reviews.find(review => review.line === i) ?? null
+		}))
+
+	const [pendingReviews, setPendingReviews] = useState<ReviewCreateSeed[]>([])
+	const peindingReviewCount = pendingReviews.length
 
 	const onSubmit = async () => {
 		console.log('保存')
 		// まとめてpostするのかそれぞれpostするのか要検討
 	}
 
-	const handleMouseupEvent = (e: MouseEvent<HTMLDivElement>) => {
-		if (ref.current === null) {
-			return
-		}
-
-		const x = e.clientX
-		const y = e.clientY
-
-		const boxX = ref.current.getBoundingClientRect().x
-		const boxY = ref.current.getBoundingClientRect().y
-
-		setCoordinate({ x: x - boxX, y: y - boxY })
-	}
-
-	useEffect(() => {
-		const callback = () => {
-			const selected = document.getSelection()
-			if (selected !== null) {
-				console.log(selected.toString())
-				setSelectedText(selected.toString())
-			}
-		}
-
-		document.addEventListener('selectionchange', callback)
-		return () => {
-			document.removeEventListener('selectionchange', callback)
-		}
-	}, [])
-
 	return (
 		<main>
 			<h1>{article.title}</h1>
-			<VStack as="form" gap={20} alignItems="center" onSubmit={onSubmit}>
+			<VStack gap={20} alignItems="center">
 				<p>{article.description}</p>
-				<Box position="relative" onMouseUp={handleMouseupEvent} ref={ref}>
-					<p>{article.content}</p>
-					<ReviewPopup coordinate={coordinate} />
-				</Box>
-				<button type="submit">保存</button>
+				<VStack w="70%" border="1px solid gray">
+					{splitedContents.map(content => (
+						<ArticleLine
+							key={content.line}
+							content={content}
+							setPendingReviews={setPendingReviews}
+						/>
+					))}
+				</VStack>
+				<Text>レビュー件数: {peindingReviewCount}</Text>
+				<button onClick={onSubmit} type="button">
+					送信
+				</button>
 			</VStack>
 		</main>
 	)
