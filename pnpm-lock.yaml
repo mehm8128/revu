@@ -31,7 +31,7 @@ dependencies:
     version: 0.30.9(@types/react@18.2.52)(postgres@3.4.4)(react@18.2.0)
   drizzle-valibot:
     specifier: ^0.2.0
-    version: 0.2.0(drizzle-orm@0.30.9)(valibot@0.27.1)
+    version: 0.2.0(drizzle-orm@0.30.9)(valibot@0.30.0)
   jotai:
     specifier: ^2.6.4
     version: 2.6.4(@types/react@18.2.52)(react@18.2.0)
@@ -66,8 +66,8 @@ dependencies:
     specifier: 5.3.3
     version: 5.3.3
   valibot:
-    specifier: ^0.27.1
-    version: 0.27.1
+    specifier: ^0.30.0
+    version: 0.30.0
 
 devDependencies:
   '@biomejs/biome':
@@ -4013,14 +4013,14 @@ packages:
       react: 18.2.0
     dev: false
 
-  /drizzle-valibot@0.2.0(drizzle-orm@0.30.9)(valibot@0.27.1):
+  /drizzle-valibot@0.2.0(drizzle-orm@0.30.9)(valibot@0.30.0):
     resolution: {integrity: sha512-+JTZZN52fFv20kGTXI1KGpysdCiedaTDpWQ6lqnxX2DD5U5tJfGPB2ROjHFjbLzK4XiH98MOhKZf174orBQAew==}
     peerDependencies:
       drizzle-orm: '>=0.23.13'
       valibot: '>=0.20'
     dependencies:
       drizzle-orm: 0.30.9(@types/react@18.2.52)(postgres@3.4.4)(react@18.2.0)
-      valibot: 0.27.1
+      valibot: 0.30.0
     dev: false
 
   /eastasianwidth@0.2.0:
@@ -6590,8 +6590,8 @@ packages:
     hasBin: true
     dev: true
 
-  /valibot@0.27.1:
-    resolution: {integrity: sha512-k57/5/kMwMjiVP0LUMpa+n4ihSemuXshz1ND4fftKw1bkHZYN/TnHcbjaEie3K7FwAceiOgugLZPjSaNxdygeg==}
+  /valibot@0.30.0:
+    resolution: {integrity: sha512-5POBdbSkM+3nvJ6ZlyQHsggisfRtyT4tVTo1EIIShs6qCdXJnyWU5TJ68vr8iTg5zpOLjXLRiBqNx+9zwZz/rA==}
     dev: false
 
   /vite-node@1.2.2(@types/node@20.11.16)(sass@1.75.0):
