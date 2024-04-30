@@ -5,7 +5,6 @@ import { createInsertSchema, createSelectSchema } from 'drizzle-valibot'
 import {
 	type Output,
 	brand,
-	date,
 	minLength,
 	number,
 	object,
@@ -32,8 +31,8 @@ export const reviewSchema = transform(
 		line: number(),
 		comment: string(),
 		createdBy: userId,
-		createdAt: date(),
-		updatedAt: date()
+		createdAt: string(),
+		updatedAt: string()
 	}),
 	({ id, articleId, createdBy, createdAt, updatedAt, ...rest }) => ({
 		id: parseReviewId(id),

@@ -5,7 +5,6 @@ import {
 	type Output,
 	boolean,
 	brand,
-	date,
 	minLength,
 	number,
 	object,
@@ -33,8 +32,8 @@ export const articleSchema = transform(
 		description: string(),
 		content: string(),
 		createdBy: userId,
-		createdAt: date(),
-		updatedAt: date()
+		createdAt: string(),
+		updatedAt: string()
 	}),
 	({ id, createdBy, createdAt, updatedAt, ...rest }) => ({
 		id: parseArticleId(id),
