@@ -1,6 +1,6 @@
 import { db } from '@/features/db'
 import { reviews } from '@/features/db/schema'
-import { mockReview, mockReviewList } from '@/features/review/mock/data'
+import { mockReviewList } from '@/features/review/mock/data'
 import type { ReviewCreateSeedData } from '@/features/review/model/type'
 
 export async function GET(
@@ -8,7 +8,7 @@ export async function GET(
 	{ params: { articleId } }: { params: { articleId: string } }
 ) {
 	const reviewList = await db.query.reviews.findMany({
-		where: (reviews, { eq }) => eq(reviews.articleId, articleId)
+		where: (reviews, { eq }) => eq(reviews.articleId, Number(articleId))
 	})
 
 	const data = mockReviewList
@@ -21,13 +21,15 @@ export async function POST(
 ) {
 	const reqBody: ReviewCreateSeedData = await req.json()
 
-	await db.insert(reviews).values({
-		...reqBody,
-		articleId,
-		createdAt: new Date(),
-		updatedAt: new Date()
-	})
+	const res = await db
+		.insert(reviews)
+		.values({
+			...reqBody,
+			articleId: Number(articleId),
+			createdAt: new Date(),
+			updatedAt: new Date()
+		})
+		.returning()
 
-	const data = mockReview
-	return Response.json(data)
+	return Response.json(res[0])
 }

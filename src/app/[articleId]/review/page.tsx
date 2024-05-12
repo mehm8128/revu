@@ -3,6 +3,7 @@
 import { useArticle } from '@/features/article/apis/fetchArticle'
 import { parseArticleId } from '@/features/article/model/type'
 import { useReviewList } from '@/features/review/apis/fetchReviewList'
+import { postReview } from '@/features/review/apis/postReview'
 import type { ReviewCreateSeed } from '@/features/review/model/type'
 import { Text, VStack } from '@kuma-ui/core'
 import { useState } from 'react'
@@ -14,20 +15,33 @@ export default function Page({
 	const { data: article } = useArticle(parseArticleId(Number(articleId)))
 	const { data: reviews } = useReviewList(parseArticleId(Number(articleId)))
 
+	const [pendingReviews, setPendingReviews] = useState<ReviewCreateSeed[]>([])
+	const peindingReviewCount = pendingReviews.length
+
+	// 既についているレビューと、pendingなレビューを両方表示
 	const splitedContents: ArticleLineType[] = article.content
 		.split('\n')
 		.map((content, i) => ({
 			content,
 			line: i,
-			review: reviews.find(review => review.line === i) ?? null
+			reviews: [...reviews, ...pendingReviews].filter(
+				review => review.line === i
+			)
 		}))
 
-	const [pendingReviews, setPendingReviews] = useState<ReviewCreateSeed[]>([])
-	const peindingReviewCount = pendingReviews.length
-
-	const onSubmit = async () => {
-		console.log('保存')
-		// まとめてpostするのかそれぞれpostするのか要検討
+	const handleSubmit = async () => {
+		try {
+			// TODO: 複数で送信できるようにする
+			const promises = pendingReviews.map(review =>
+				postReview(article.id, review)
+			)
+			await Promise.all(promises)
+		} catch (e) {
+			if (e instanceof Error) {
+				console.error(e)
+				throw new Error(e.message)
+			}
+		}
 	}
 
 	return (
@@ -45,7 +59,7 @@ export default function Page({
 					))}
 				</VStack>
 				<Text>レビュー件数: {peindingReviewCount}</Text>
-				<button onClick={onSubmit} type="button">
+				<button onClick={handleSubmit} type="button">
 					送信
 				</button>
 			</VStack>

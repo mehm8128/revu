@@ -30,7 +30,8 @@ export default function ReviewCommentEdit({
 		resolver: valibotResolver(reviewCreateSeedSchema),
 		defaultValues: {
 			comment: '',
-			createdBy: session?.user?.id,
+			// TODO: 取れなかったときにエラーにしたい
+			createdBy: session?.user?.id ?? '1',
 			line: line
 		}
 	})

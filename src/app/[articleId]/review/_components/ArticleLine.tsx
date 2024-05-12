@@ -1,6 +1,6 @@
 'use client'
 
-import type { Review, ReviewCreateSeed } from '@/features/review/model/type'
+import type { ReviewCreateSeed } from '@/features/review/model/type'
 import { Box, Button, HStack, Text } from '@kuma-ui/core'
 import { type Dispatch, type SetStateAction, useState } from 'react'
 import { MdModeComment } from 'react-icons/md'
@@ -10,7 +10,7 @@ import ReviewCommentEdit from './ReviewCommentEdit'
 export interface ArticleLineType {
 	content: string
 	line: number
-	review: Review | null
+	reviews: ReviewCreateSeed[]
 }
 
 export default function ArticleLine({
@@ -22,6 +22,15 @@ export default function ArticleLine({
 }) {
 	const [openEditor, setOpenEditor] = useState(false)
 	const [openReviewComment, setOpenReviewComment] = useState(false)
+
+	const handleOpenEditor = () => {
+		setOpenReviewComment(false)
+		setOpenEditor(!openEditor)
+	}
+	const handleOpenReviewComment = () => {
+		setOpenEditor(false)
+		setOpenReviewComment(!openReviewComment)
+	}
 
 	return (
 		<Box key={content.line}>
@@ -37,15 +46,15 @@ export default function ArticleLine({
 					_hover={{
 						backgroundColor: 'gray'
 					}}
-					onClick={() => setOpenEditor(!openEditor)}
+					onClick={handleOpenEditor}
 				>
 					<Box>{content.line + 1}</Box>
 					<Text>{content.content}</Text>
 				</Button>
-				{content.review !== null && (
+				{content.reviews.length !== 0 && (
 					<Box p={4}>
 						<Button
-							onClick={() => setOpenReviewComment(!openReviewComment)}
+							onClick={handleOpenReviewComment}
 							type="button"
 							border="none"
 							bgColor="white"
@@ -55,16 +64,19 @@ export default function ArticleLine({
 					</Box>
 				)}
 			</HStack>
-			{openEditor ? (
+			{openEditor && (
 				<ReviewCommentEdit
 					line={content.line}
 					setPendingReviews={setPendingReviews}
 					closeCommentEditor={() => setOpenEditor(false)}
 				/>
-			) : (
-				openReviewComment &&
-				content.review !== null && <ReviewComment review={content.review} />
 			)}
+			<Box>
+				{openReviewComment &&
+					content.reviews.map(review => (
+						<ReviewComment review={review} key={review.comment} />
+					))}
+			</Box>
 		</Box>
 	)
 }
